@@ -6,8 +6,8 @@ import { verifyToken } from '../middleware/tokenValidation.js';
 
 const userRoutes = Router();
 userRoutes.use(validate);
-userRoutes.post('/balance', verifyToken, balanceController)
-userRoutes.post('/transaction', verifyToken, transactionPostController)
+userRoutes.get('/balance', verifyToken, balanceController)
 userRoutes.get('/transaction', verifyToken, transactionGetController)
+userRoutes.post('/transaction', verifyToken, transactionPostController)
 
 export default userRoutes;

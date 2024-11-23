@@ -1,12 +1,10 @@
 import "./config.js"
-
 import express from "express"
 import userRoutes from "./routes/user.js"
 import signupRoute from "./routes/signup.js"
 import loginRoute from "./routes/login.js"
 import mongoose from "mongoose"
 import { refreshToken } from "./controllers/refresh.js"
-
 
 const app = express()
 const port = 4000
@@ -16,7 +14,6 @@ app.use("/signup", signupRoute);
 app.use("/login", loginRoute);
 app.use("/user", userRoutes);
 app.post("/refresh", refreshToken);
-
 
 app.listen(port, () => {
     mongoose.connect(process.env.MONGODB_CONNECTION)

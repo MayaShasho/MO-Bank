@@ -2,10 +2,11 @@ import { User, PendingUser } from "../schemas.js";
 import { transporter } from "../sender.js";
 
 export const signupController = async (req, res) => {
-    let { first_name, last_name, phone_number, email, password } = req.body;
-    let newUser = new User({ _id: email, first_name, last_name, phone_number, password });
+    const balance = Math.floor(Math.random() * 90000) + 10000;
+    const { first_name, last_name, phone_number, email, password } = req.body;
+    const newUser = new User({ _id: email, first_name, last_name, phone_number, password, balance });
 
-    const emailCode = Math.floor(Math.random() * 90000) + 10000;
+    const emailCode = Math.floor(Math.random() * 900000) + 100000;
 
     try {
         await newUser.save();

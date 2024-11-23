@@ -10,21 +10,35 @@ const userSchema = new mongoose.Schema(
             type: String,
             require: true
         },
-        last_name: String,
-        phone_number: String,
-        password: String,
+        last_name: {
+            type: String,
+        },
+        phone_number: {
+            type: String,
+        },
+        password: {
+            type: String,
+        },
         activated: {
             type: Boolean,
             default: false,
-        }
+        },
+        balance: {
+            type: String,
+            default: 0,
+        },
     }, { timestamps: true }
 )
 export const User = mongoose.model('user', userSchema);
 
 const confirmationSchema = new mongoose.Schema(
     {
-        _id: String,
-        email: String,
+        _id: {
+            type: String,
+        },
+        email: {
+            type: String,
+        },
         expirationTime: {
             type: Date,
             default: () => (Date.now() + codeExpirationTime)
