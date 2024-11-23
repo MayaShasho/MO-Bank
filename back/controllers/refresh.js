@@ -8,18 +8,18 @@ export const refreshToken = (req, res, next) => {
     }
     let decoded = null;
     try {
-        decoded = jwt.verify(oldRefresh, "maya123maya");
+        decoded = jwt.verify(oldRefresh, process.env.JWT_REFRESH_SECRETE_KEY);
         console.log(decoded);
     } catch (error) {
         return res.status(401).json({ error: 'Invalid token' });
     }
     const newToken = { userId: decoded.userId }
 
-    const accessToken = jwt.sign(newToken, "hfOdRrHxsyA+p6fGak/LxbKSK+sUMunrYCS68CDqjnim59/X1comYRwHiUNwJA2AEt9L3LmjV9oQBx+Cf/yRqw==", {
+    const accessToken = jwt.sign(newToken, process.env.JWT_SECRETE_KEY, {
         expiresIn: '5m'
     });
 
-    const refreshToken = jwt.sign(newToken, "maya123maya", {
+    const refreshToken = jwt.sign(newToken, process.env.JWT_REFRESH_SECRETE_KEY, {
         expiresIn: '2h'
     });
 

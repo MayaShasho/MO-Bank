@@ -1,3 +1,4 @@
 export const resendController = (req, res) => {
-    res.send('resendController: Got a POST request')
+
+    return res.status(200).json({ "resend": "Success" });
 }

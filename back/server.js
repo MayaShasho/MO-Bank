@@ -1,11 +1,12 @@
+import "./config.js"
+
 import express from "express"
 import userRoutes from "./routes/user.js"
 import signupRoute from "./routes/signup.js"
 import loginRoute from "./routes/login.js"
 import mongoose from "mongoose"
 import { refreshToken } from "./controllers/refresh.js"
-import dotenv from "dotenv"
-dotenv.config({ path: "./.env" })
+
 
 const app = express()
 const port = 4000

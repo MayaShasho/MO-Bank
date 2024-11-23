@@ -20,7 +20,7 @@ export const loginController = async (req, res) => {
         expiresIn: '5m'
     });
 
-    const refreshToken = jwt.sign({ userId: req.body.email }, "maya123maya", {
+    const refreshToken = jwt.sign({ userId: req.body.email }, process.env.JWT_REFRESH_SECRETE_KEY, {
         expiresIn: '2h'
     });
 
