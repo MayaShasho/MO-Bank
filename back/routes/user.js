@@ -1,13 +1,14 @@
 import { Router } from 'express'
 import { balanceController } from '../controllers/balance.js';
-import { transactionPostController, transactionGetController } from '../controllers/transaction.js';
-import { validate } from '../middleware/validation.js';
+import { transactionController } from '../controllers/transaction.js';
+import { transactionHistoryController } from '../controllers/history.js';
 import { verifyToken } from '../middleware/tokenValidation.js';
+import { verifyTransaction } from '../middleware/transactionValidation.js';
 
 const userRoutes = Router();
-userRoutes.use(validate);
-userRoutes.get('/balance', verifyToken, balanceController)
-userRoutes.get('/transaction', verifyToken, transactionGetController)
-userRoutes.post('/transaction', verifyToken, transactionPostController)
+userRoutes.use(verifyToken);
+userRoutes.get('/balance', balanceController)
+userRoutes.post('/transaction', verifyTransaction, transactionController)
+userRoutes.get('/transaction', transactionHistoryController)
 
 export default userRoutes;

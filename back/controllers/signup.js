@@ -1,41 +1,30 @@
-import { User, PendingUser } from "../schemas.js";
-import { transporter } from "../sender.js";
+import { PendingUser } from "../schemas.js";
+import { EmailForm, SendEmail } from "../utils/email.js";
+import { GenerateRandomNumber } from "../utils/randomNumber.js";
 
 export const signupController = async (req, res) => {
-    const balance = Math.floor(Math.random() * 90000) + 10000;
     const { first_name, last_name, phone_number, email, password } = req.body;
-    const newUser = new User({ _id: email, first_name, last_name, phone_number, password, balance });
+    const emailCode = GenerateRandomNumber(100000, 900000);
 
-    const emailCode = Math.floor(Math.random() * 900000) + 100000;
+    const pendingUser = new PendingUser({ _id: email, first_name, last_name, phone_number, password, confirmation_code: emailCode });
 
-    try {
-        await newUser.save();
-    } catch (err) {
-        console.log(err.message)
+    const userExist = await PendingUser.exists({ _id: email });
+    if (userExist) {
+        return res.status(400).json({ status: ' Already exists' });
     }
 
-    const mailOptions = {
-        from: 'mobank158@gmail.com',
-        to: email,
-        subject: 'Email Confirmation',
-        text: "Use the following 5 digit code to confirm your email address \n" + emailCode.toString()
-    };
+    const userEmailForm = EmailForm(email, emailCode);
+    try {
+        await SendEmail(userEmailForm);
+    } catch (error) {
+        return res.status(500).json({ status: 'Failed to send email', error: error.message });
+    }
 
-    transporter.sendMail(mailOptions, function (error, info) {
-        if (error) {
-            console.log(error);
-        } else {
-            console.log('Email sent: ' + info.response);
-        }
-    });
-
-    let pendingUser = new PendingUser({ _id: emailCode, email });
     try {
         await pendingUser.save();
     } catch (err) {
         console.log(err.message)
     }
 
-
-    return res.status(200).json({ "status": "Success", message: req.body });
-}
+    return res.status(200).json({ status: 'Success', message: req.body });
+};
