@@ -1,0 +1,78 @@
+  .LandingPage {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+  }
+
+  .AppHeader {
+      display: grid;
+      grid-template-columns: auto 1fr auto auto;
+      gap: 50px;
+      margin-bottom: 10px;
+  }
+
+  .AppLogo {
+      height: auto;
+      background: linear-gradient(190deg, #333, #757474);
+      border-radius: 10px;
+      color: white;
+      text-align: center;
+      align-content: center;
+      font-family: "Titan One", sans-serif;
+      font-size: 40px;
+      padding-inline: 15px;
+  }
+
+  .navButton {
+      background: none;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      font-size: 25px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+  }
+
+  .ContactUsButton {
+      grid-column-start: 3;
+  }
+
+  .LoginButton {
+      grid-column-start: 4;
+  }
+
+  .MainContent {
+      border-radius: 10px;
+      color: white;
+      text-align: center;
+      flex-grow: 1;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+          url('../../assets/background.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+  }
+
+  .MainContent .LandingPageText {
+      font-size: 6rem;
+      margin-bottom: 20px;
+      max-width: 1000px;
+      margin: auto;
+      padding: 80px;
+  }
+
+  .LandingPageText {
+      margin-bottom: 20px;
+      color: var(--color-primary);
+  }
+
+  .GetStartedButton {
+      background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+      color: white;
+      font-size: 2rem;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+  }

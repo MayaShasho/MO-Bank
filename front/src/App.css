@@ -1,0 +1,21 @@
+:root {
+  --color-primary: #ff6700;
+  --color-secondary: #944500;
+}
+
+* {
+  margin: 0;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.App {
+  padding: 20px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}

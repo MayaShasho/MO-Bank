@@ -2,15 +2,17 @@ import "./config.js"
 import "./cronJob.js";
 
 import express from "express"
-import cookieParser from "cookie-parser";
 import userRoutes from "./routes/user.js"
 import signupRoute from "./routes/signup.js"
 import loginRoute from "./routes/login.js"
 import mongoose from "mongoose"
 import { refreshToken } from "./controllers/refresh.js"
+import cors from 'cors';
 
 const app = express();
-const port = 4000;
+app.use(cors());
+
+const port = 8080;
 
 app.use(express.json());
 

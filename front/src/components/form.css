@@ -1,0 +1,23 @@
+form {
+    display: flex;
+    flex-direction: column;
+    color: rgb(0, 0, 0);
+    background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+    border-radius: 10px;
+    gap: 20px;
+    padding: 30px 30px;
+    font-size: 20px;
+    margin: 100px;
+}
+
+.FormInput {
+    display: inline-block;
+    border-radius: 8px;
+    accent-color: var(--color-secondary);
+    width: 100%;
+    min-height: 2rem;
+    padding-inline-start: 0.5rem;
+    margin-top: 5px;
+    font-size: 18px;
+    padding: 6px 12px;
+}

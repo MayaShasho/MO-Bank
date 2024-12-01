@@ -9,7 +9,6 @@ export const transactionHistoryController = async (req, res) => {
             select: "from to amount date"
         });
 
-        console.log('user', user)
         if (!user) {
             return res.status(404).json({ status: "Failed", message: "User not found" });
         }

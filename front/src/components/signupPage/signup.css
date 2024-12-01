@@ -1,0 +1,27 @@
+.Signup {
+    display: flex;
+    justify-content: flex-end;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+        url('../../assets/signup.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    flex-grow: 1;
+    align-items: baseline;
+}
+
+.SignupHeader {
+    font-size: 48px;
+    text-align: center;
+}
+
+.SignupButton {
+    padding: 8px 16px;
+    border-radius: 50px;
+    width: 150px;
+    margin-inline: auto;
+    font-size: 20px;
+    border: none;
+    background-color: white;
+}
