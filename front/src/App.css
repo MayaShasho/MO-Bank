@@ -13,6 +13,10 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
+a {
+  text-decoration: none;
+}
+
 .App {
   padding: 20px;
   height: 100vh;

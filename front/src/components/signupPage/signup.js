@@ -1,4 +1,3 @@
-import './signup.css';
 import "../form.css";
 
 import React, { useState } from 'react';
@@ -47,9 +46,9 @@ const Signup = () => {
 
     return (
         <>
-            <div className="Signup">
+            <div className="FormContainer">
                 <form onSubmit={handleSubmit}>
-                    <h1 className='SignupHeader'>Sign Up</h1>
+                    <h1 className='FormHeader'>Sign Up</h1>
                     <label>
                         <input
                             className="FormInput"
@@ -103,7 +102,7 @@ const Signup = () => {
                             required
                         />
                     </label>
-                    <button className='SignupButton' type="submit">Sign Up</button>
+                    <button className='SubmitButton' type="submit">Sign Up</button>
                 </form>
             </div>
         </>

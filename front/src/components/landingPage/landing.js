@@ -1,7 +1,7 @@
 import "./landing.css"
 import React from 'react';
 
-const LandingPage = ({ onGetStartedClick, onLoginClick }) => {
+const LandingPage = ({ onGetStartedClick }) => {
     return (
         <>
             <div className="LandingPage">
