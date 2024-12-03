@@ -1,9 +1,13 @@
 import { User } from "../schemas.js";
 
 export const verifyTransaction = async (req, res, next) => {
-    const { from, to, amount } = req.body;
+    const { to, amount } = req.body;
+    const from = req.userId;
+    if (to == from) {
+        return res.status(400).json({ status: "Failed", message: "Transaction can't be completed" });
+    }
 
-    if (!from || !to || !amount) {
+    if (!to || !amount) {
         return res.status(400).json({ status: "Failed", message: "All fields are required" });
     }
 

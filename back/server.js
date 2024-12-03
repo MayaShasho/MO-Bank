@@ -19,6 +19,7 @@ app.use(express.json());
 app.use("/signup", signupRoute);
 app.use("/login", loginRoute);
 app.use("/user", userRoutes);
+
 app.post("/refresh", refreshToken);
 
 app.listen(port, async () => {

@@ -1,6 +1,6 @@
-import "../form.css";
-
+import "../form/form.css";
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
     const [formData, setFormData] = useState({
@@ -10,6 +10,8 @@ const Signup = () => {
         email: '',
         password: '',
     });
+
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -34,9 +36,10 @@ const Signup = () => {
             const result = await response.json();
 
             if (response.ok) {
-                alert('Signup successful! Check your email for confirmation.');
+                alert('Signup successful! Check your email for the confirmation code.');
+                navigate('/confirmation', { state: { email: formData.email } });
             } else {
-                alert(`Signup failed: ${result.status}`);
+                alert(`Signup failed: ${result.message}`);
             }
         } catch (error) {
             console.error('Error during signup: ', error);
@@ -45,67 +48,65 @@ const Signup = () => {
     };
 
     return (
-        <>
-            <div className="FormContainer">
-                <form onSubmit={handleSubmit}>
-                    <h1 className='FormHeader'>Sign Up</h1>
-                    <label>
-                        <input
-                            className="FormInput"
-                            type="text"
-                            name="first_name"
-                            placeholder='First Name'
-                            value={formData.first_name}
-                            onChange={handleChange}
-                            required
-                        />
-                    </label>
-                    <label>
-                        <input
-                            className="FormInput"
-                            type="text"
-                            name="last_name"
-                            placeholder='Last Name'
-                            value={formData.last_name}
-                            onChange={handleChange}
-                        />
-                    </label>
-                    <label>
-                        <input
-                            className="FormInput"
-                            type="tel"
-                            name="phone_number"
-                            placeholder='Phone Number'
-                            value={formData.phone_number}
-                            onChange={handleChange}
-                        />
-                    </label>
-                    <label>
-                        <input
-                            className="FormInput"
-                            type="email"
-                            name="email"
-                            placeholder='Email'
-                            value={formData.email}
-                            onChange={handleChange}
-                            required
-                        />
-                    </label>
-                    <label>
-                        <input
-                            className="FormInput"
-                            type="password"
-                            name="password"
-                            placeholder='Password'
-                            value={formData.password}
-                            onChange={handleChange}
-                            required
-                        />
-                    </label>
-                    <button className='SubmitButton' type="submit">Sign Up</button>
-                </form>
-            </div>
-        </>
+        <div className="FormContainer">
+            <form onSubmit={handleSubmit}>
+                <h1 className="FormHeader">Sign Up</h1>
+                <label>
+                    <input
+                        className="FormInput"
+                        type="text"
+                        name="first_name"
+                        placeholder="First Name"
+                        value={formData.first_name}
+                        onChange={handleChange}
+                        required
+                    />
+                </label>
+                <label>
+                    <input
+                        className="FormInput"
+                        type="text"
+                        name="last_name"
+                        placeholder="Last Name"
+                        value={formData.last_name}
+                        onChange={handleChange}
+                    />
+                </label>
+                <label>
+                    <input
+                        className="FormInput"
+                        type="tel"
+                        name="phone_number"
+                        placeholder="Phone Number"
+                        value={formData.phone_number}
+                        onChange={handleChange}
+                    />
+                </label>
+                <label>
+                    <input
+                        className="FormInput"
+                        type="email"
+                        name="email"
+                        placeholder="Email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                    />
+                </label>
+                <label>
+                    <input
+                        className="FormInput"
+                        type="password"
+                        name="password"
+                        placeholder="Password"
+                        value={formData.password}
+                        onChange={handleChange}
+                        required
+                    />
+                </label>
+                <button className="SubmitButton" type="submit">Sign Up</button>
+            </form>
+        </div>
     );
 };
 

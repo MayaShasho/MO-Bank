@@ -2,7 +2,7 @@ import React from 'react';
 import { FaEnvelope, FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
-const Header = ({ onLoginClick }) => {
+const Header = () => {
     return (
         <header className="AppHeader">
             <Link to='/'>
@@ -12,10 +12,10 @@ const Header = ({ onLoginClick }) => {
                 <FaEnvelope />
                 Contact us
             </button>
-            <button className="LoginButton navButton" onClick={onLoginClick} >
+            <Link className="LoginButton navButton" to='/login' >
                 <FaUser />
                 Log in
-            </button>
+            </Link>
         </header>
     );
 };
