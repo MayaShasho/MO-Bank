@@ -2,7 +2,6 @@ import './transactionHistory.css'
 import formatBalance from '../../../utils/formatBalance.js'
 import React, { useEffect } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
-import { useNavigate } from 'react-router-dom';
 
 const TransactionHistory = ({ userEmail, transactions, fetchTransactionsHistory }) => {
 
