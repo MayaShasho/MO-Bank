@@ -1,4 +1,6 @@
+import { User } from "../schemas.js";
 import { PendingUser } from "../schemas.js";
+
 import { EmailForm, SendEmail } from "../utils/email.js";
 import { GenerateRandomNumber } from "../utils/randomNumber.js";
 
@@ -7,7 +9,7 @@ export const signupController = async (req, res) => {
     const emailCode = GenerateRandomNumber(100000, 900000);
 
     try {
-        const userExist = await PendingUser.exists({ _id: email });
+        const userExist = await User.exists({ _id: email });
         if (userExist) {
             return res.status(400).json({ status: 'error', message: 'User already exists' });
         }
@@ -22,6 +24,11 @@ export const signupController = async (req, res) => {
 
         const userEmailForm = EmailForm(email, emailCode);
         await SendEmail(userEmailForm);
+
+        const pendingUserExist = await PendingUser.exists({ _id: email });
+        if (pendingUserExist) {
+            await PendingUser.deleteOne({ _id: email });
+        }
 
         await pendingUser.save();
 

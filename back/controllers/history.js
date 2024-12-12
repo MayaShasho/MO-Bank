@@ -6,7 +6,7 @@ export const transactionHistoryController = async (req, res) => {
 
         const user = await User.findById(userId).populate({
             path: "transactions",
-            select: "from to amount date"
+            select: "from to amount date",
         });
 
         if (!user) {
@@ -23,3 +23,4 @@ export const transactionHistoryController = async (req, res) => {
         return res.status(500).json({ status: "Failed", message: "Internal server error" });
     }
 };
+

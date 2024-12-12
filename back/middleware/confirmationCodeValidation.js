@@ -7,7 +7,7 @@ export const validateConfirmationCode = async (confirmation_code) => {
     }
 
     if (existingPending.expirationTime < Date.now()) {
-        throw new Error("Confirmation code has expired");
+        throw new Error("Confirmation code has expired, press resend");
     }
 
     return existingPending;

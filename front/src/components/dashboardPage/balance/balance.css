@@ -1,0 +1,12 @@
+.BalanceHeaderContainer {
+    background: url('../../../assets/gold3.png') no-repeat center;
+    background-size: cover;
+    border-radius: 10px;
+}
+
+.BalanceHeader {
+    font-size: 30px;
+    text-align: left;
+    margin-bottom: 20px;
+    display: inline;
+}

@@ -6,7 +6,7 @@ export const loginController = async (req, res) => {
     const existingUser = await User.findById(email);
 
     if (!existingUser || existingUser.password !== password) {
-        return res.status(400).json({ msg: "Wrong email or password" })
+        return res.status(400).json({ message: "Wrong email or password" })
     }
 
     const accessToken = generateAccessToken({ userId: req.body.email });

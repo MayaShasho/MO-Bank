@@ -12,7 +12,7 @@ export const resendController = async (req, res) => {
     try {
         const userExist = await User.exists({ _id: email });
         if (userExist) {
-            return res.status(400).json({ status: 'Failed', message: 'Email already confirmed' });
+            return res.status(400).json({ status: 'Failed', message: 'Email already confirmed, please login' });
         }
 
         const existingPending = await PendingUser.findById(email);

@@ -13,9 +13,9 @@ export const confirmationController = async (req, res) => {
 
         await PendingUser.deleteOne({ confirmation_code });
 
-        return res.status(200).json({ msg: "User successfully confirmed and activated" });
+        return res.status(200).json({ message: "User successfully confirmed and activated" });
     } catch (err) {
         console.error(err.message);
-        return res.status(400).json({ msg: err.message });
+        return res.status(400).json({ message: err.message });
     }
 };

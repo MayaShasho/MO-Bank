@@ -66,12 +66,17 @@
 .LandingPageText {
     margin-bottom: 20px;
     color: var(--color-primary);
+    background: url('../../assets/gold3.png') no-repeat center fixed;
+    background-size: cover;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .GetStartedButton {
-    background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
-    color: white;
+    background: url('../../assets/gold3.png') no-repeat center;
+    color: rgb(0, 0, 0);
     font-size: 2rem;
+    font-weight: bold;
     padding: 15px 30px;
     border: none;
     border-radius: 50px;

@@ -1,10 +1,15 @@
 import "../form/form.css";
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import PasswordInput from "../inputs/passwordInput.js";
+import Input from "../inputs/input.js";
+import ErrorMessage from "../errorMessage/errorMessage.js";
 
 const Login = () => {
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
+    const [error, setError] = useState('');
+
     const [formData, setFormData] = useState({
         email: '',
         password: '',
@@ -20,7 +25,10 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setError('');
         setLoading(true);
+        console.log('submit');
+
 
         try {
             const response = await fetch('http://localhost:8080/login', {
@@ -34,16 +42,15 @@ const Login = () => {
             const result = await response.json();
 
             if (response.ok) {
-                alert('Login successful!');
                 localStorage.setItem('accessToken', result.accessToken);
                 localStorage.setItem('refreshToken', result.refreshToken);
                 navigate('/user');
             } else {
-                alert(`Login failed: ${result.msg}`);
+                setError(`Login failed: ${result.message}`);
             }
         } catch (error) {
             console.error('Error during login: ', error);
-            alert('An error occurred. Please try again later.');
+            setError(`Signup failed: ${error.message}`);
         } finally {
             setLoading(false);
         }
@@ -51,30 +58,12 @@ const Login = () => {
 
     return (
         <div className="FormContainer">
-            <form onSubmit={handleSubmit}>
+            <form className="MainForm" onSubmit={handleSubmit}>
                 <h2 className="FormHeader">Login</h2>
-                <label>
-                    <input
-                        className="FormInput"
-                        placeholder='Email'
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                    />
-                </label>
-                <label>
-                    <input
-                        className="FormInput"
-                        placeholder='Password'
-                        type="password"
-                        name="password"
-                        value={formData.password}
-                        onChange={handleChange}
-                        required
-                    />
-                </label>
+                <Input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} />
+                <PasswordInput name="password" placeholder="Password" value={formData.password} onChange={handleChange} />
+                <ErrorMessage error={error} />
+
                 <button className="SubmitButton" type="submit" disabled={loading}>
                     {loading ? 'Logging in...' : 'Login'}
                 </button>
