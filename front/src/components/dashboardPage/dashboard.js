@@ -25,41 +25,47 @@ const User = () => {
     const [info, setInfo] = useState(0);
     const navigate = useNavigate();
 
-    const fetchDashboard = useCallback(async () => {
-        const balanceResponse = await FetchWithAuth(
-            'https://mo-bank.onrender.com/user/balance',
-            {},
-            navigate
-        );
-        if (balanceResponse.ok) {
-            const balanceData = await balanceResponse.json();
-            setBalance(balanceData.balance);
-        }
-    }, [navigate]);
+    function fetchDashboard() {
+        useCallback(async () => {
+            const balanceResponse = await FetchWithAuth(
+                'https://mo-bank.onrender.com/user/balance',
+                {},
+                navigate
+            );
+            if (balanceResponse.ok) {
+                const balanceData = await balanceResponse.json();
+                setBalance(balanceData.balance);
+            }
+        }, [navigate]);
+    }
 
-    const fetchUserInfo = useCallback(async () => {
-        const infoResponse = await FetchWithAuth(
-            'https://mo-bank.onrender.com/user/info',
-            {},
-            navigate
-        );
-        if (infoResponse.ok) {
-            const infoData = await infoResponse.json();
-            setInfo(infoData.info);
-        }
-    }, [navigate]);
+    function fetchUserInfo() {
+        useCallback(async () => {
+            const infoResponse = await FetchWithAuth(
+                'https://mo-bank.onrender.com/user/info',
+                {},
+                navigate
+            );
+            if (infoResponse.ok) {
+                const infoData = await infoResponse.json();
+                setInfo(infoData.info);
+            }
+        }, [navigate]);
+    }
 
-    const fetchTransactionsHistory = useCallback(async () => {
-        const transactionsResponse = await FetchWithAuth(
-            'https://mo-bank.onrender.com/user/transaction',
-            {},
-            navigate
-        );
-        if (transactionsResponse.ok) {
-            const transactionsData = await transactionsResponse.json();
-            setTransactions(transactionsData.transactions);
-        }
-    }, [navigate]);
+    function fetchTransactionsHistory() {
+        useCallback(async () => {
+            const transactionsResponse = await FetchWithAuth(
+                'https://mo-bank.onrender.com/user/transaction',
+                {},
+                navigate
+            );
+            if (transactionsResponse.ok) {
+                const transactionsData = await transactionsResponse.json();
+                setTransactions(transactionsData.transactions);
+            }
+        }, [navigate]);
+    }
 
     return (
         <div className="DashboardContainer">
