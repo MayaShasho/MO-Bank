@@ -14,7 +14,7 @@ const User = () => {
 
     const fetchDashboard = useCallback(async () => {
         const balanceResponse = await FetchWithAuth(
-            'hhttps://mo-bank.onrender.com/user/balance',
+            'https://mo-bank.onrender.com/user/balance',
             {},
             navigate
         );
