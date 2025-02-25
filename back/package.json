@@ -9,7 +9,7 @@
     "dev": "nodemon server.js"
   },
   "type": "module",
-  "author": "Maya",
+  "author": "Maya Shasho",
   "license": "ISC",
   "dependencies": {
     "cookie-parser": "^1.4.7",
