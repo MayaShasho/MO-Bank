@@ -13,13 +13,16 @@ const FetchWithAuth = async (url, options = {}, navigate) => {
     let response = await fetch(url, authOptions);
 
     if (response.status === 401) {
-        const refreshResponse = await fetch('http://localhost:8080/refresh', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ refreshToken }),
-        });
+        const refreshResponse = await fetch(
+            'https://mo-bank.onrender.com/refresh',
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ refreshToken }),
+            }
+        );
 
         if (refreshResponse.ok) {
             const refreshResult = await refreshResponse.json();

@@ -1,9 +1,9 @@
-import "../form/form.css";
+import '../form/form.css';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import PasswordInput from "../inputs/passwordInput.js";
-import Input from "../inputs/input.js";
-import ErrorMessage from "../errorMessage/errorMessage.js";
+import PasswordInput from '../inputs/passwordInput.js';
+import Input from '../inputs/input.js';
+import ErrorMessage from '../errorMessage/errorMessage.js';
 
 const Signup = () => {
     const [formData, setFormData] = useState({
@@ -35,24 +35,27 @@ const Signup = () => {
         }
 
         try {
-            const response = await fetch('http://localhost:8080/signup', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    first_name: formData.first_name,
-                    last_name: formData.last_name,
-                    phone_number: formData.phone_number,
-                    email: formData.email,
-                    password: formData.password,
-                }),
-            });
+            const response = await fetch(
+                'https://mo-bank.onrender.com/signup',
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        first_name: formData.first_name,
+                        last_name: formData.last_name,
+                        phone_number: formData.phone_number,
+                        email: formData.email,
+                        password: formData.password,
+                    }),
+                }
+            );
 
             const result = await response.json();
 
             if (response.ok) {
-                localStorage.setItem("email", formData.email)
+                localStorage.setItem('email', formData.email);
                 navigate('/confirmation');
             } else {
                 setError(`Signup failed: ${result.message}`);
@@ -67,17 +70,53 @@ const Signup = () => {
         <div className="FormContainer">
             <form className="MainForm SignupForm" onSubmit={handleSubmit}>
                 <h1 className="FormHeader">Sign Up</h1>
-                <Input type="text" name="first_name" placeholder="First Name" value={formData.first_name} onChange={handleChange} />
-                <Input type="text" name="last_name" placeholder="Last Name" value={formData.last_name} onChange={handleChange} />
-                <Input type="tel" name="phone_number" placeholder="Phone Number" value={formData.phone_number} onChange={handleChange} />
-                <Input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} />
+                <Input
+                    type="text"
+                    name="first_name"
+                    placeholder="First Name"
+                    value={formData.first_name}
+                    onChange={handleChange}
+                />
+                <Input
+                    type="text"
+                    name="last_name"
+                    placeholder="Last Name"
+                    value={formData.last_name}
+                    onChange={handleChange}
+                />
+                <Input
+                    type="tel"
+                    name="phone_number"
+                    placeholder="Phone Number"
+                    value={formData.phone_number}
+                    onChange={handleChange}
+                />
+                <Input
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    value={formData.email}
+                    onChange={handleChange}
+                />
 
-                <PasswordInput value={formData.password} onChange={handleChange} name="password" placeholder="Password" />
-                <PasswordInput value={formData.confirmPassword} onChange={handleChange} name="confirmPassword" placeholder="Confirm Password" />
+                <PasswordInput
+                    value={formData.password}
+                    onChange={handleChange}
+                    name="password"
+                    placeholder="Password"
+                />
+                <PasswordInput
+                    value={formData.confirmPassword}
+                    onChange={handleChange}
+                    name="confirmPassword"
+                    placeholder="Confirm Password"
+                />
                 <ErrorMessage error={error} />
-                <button className="SubmitButton" type="submit">Sign Up</button>
+                <button className="SubmitButton" type="submit">
+                    Sign Up
+                </button>
             </form>
-        </div >
+        </div>
     );
 };
 

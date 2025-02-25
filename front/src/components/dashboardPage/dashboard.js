@@ -27,7 +27,7 @@ const User = () => {
 
     const fetchDashboard = useCallback(async () => {
         const balanceResponse = await FetchWithAuth(
-            'http://localhost:8080/user/balance',
+            'https://mo-bank.onrender.com/user/balance',
             {},
             navigate
         );
@@ -39,7 +39,7 @@ const User = () => {
 
     const fetchUserInfo = useCallback(async () => {
         const infoResponse = await FetchWithAuth(
-            'http://localhost:8080/user/info',
+            'https://mo-bank.onrender.com/user/info',
             {},
             navigate
         );
@@ -51,7 +51,7 @@ const User = () => {
 
     const fetchTransactionsHistory = useCallback(async () => {
         const transactionsResponse = await FetchWithAuth(
-            'http://localhost:8080/user/transaction',
+            'https://mo-bank.onrender.com/user/transaction',
             {},
             navigate
         );

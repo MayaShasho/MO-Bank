@@ -1,11 +1,14 @@
-import './createTransaction.css'
-import '../../form/form.css'
+import './createTransaction.css';
+import '../../form/form.css';
 import React, { useState } from 'react';
 import FetchWithAuth from '../../../utils/fetchWithAuth.js';
 import { Typography } from '@mui/material';
 
 const CreateTransaction = ({ fetchDashboard, fetchTransactionsHistory }) => {
-    const [newTransaction, setNewTransaction] = useState({ to: '', amount: '' });
+    const [newTransaction, setNewTransaction] = useState({
+        to: '',
+        amount: '',
+    });
     const [error, setError] = useState('');
 
     const handleInputChange = (e) => {
@@ -27,14 +30,17 @@ const CreateTransaction = ({ fetchDashboard, fetchTransactionsHistory }) => {
         }
 
         try {
-            const response = await FetchWithAuth('http://localhost:8080/user/transaction', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    to: newTransaction.to,
-                    amount: newTransaction.amount,
-                }),
-            });
+            const response = await FetchWithAuth(
+                'https://mo-bank.onrender.com/user/transaction',
+                {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        to: newTransaction.to,
+                        amount: newTransaction.amount,
+                    }),
+                }
+            );
 
             if (response.ok) {
                 const result = await response.json();
@@ -53,12 +59,17 @@ const CreateTransaction = ({ fetchDashboard, fetchTransactionsHistory }) => {
 
     return (
         <section>
-            <form className='CreateTransactionForm' onSubmit={handleTransactionSubmit}>
-                <h2 className='CreateTransactionHeader'>Create Transaction: </h2>
+            <form
+                className="CreateTransactionForm"
+                onSubmit={handleTransactionSubmit}
+            >
+                <h2 className="CreateTransactionHeader">
+                    Create Transaction:{' '}
+                </h2>
                 <label>
                     <input
-                        className='FormInput'
-                        placeholder='Receiver Email'
+                        className="FormInput"
+                        placeholder="Receiver Email"
                         name="to"
                         value={newTransaction.to}
                         onChange={handleInputChange}
@@ -67,8 +78,8 @@ const CreateTransaction = ({ fetchDashboard, fetchTransactionsHistory }) => {
                 </label>
                 <label>
                     <input
-                        className='FormInput'
-                        placeholder='Amount'
+                        className="FormInput"
+                        placeholder="Amount"
                         name="amount"
                         type="text"
                         value={newTransaction.amount}
@@ -76,10 +87,15 @@ const CreateTransaction = ({ fetchDashboard, fetchTransactionsHistory }) => {
                         required
                     />
                 </label>
-                <button className="SubmitButton SubmitTransaction" type="submit">Submit Transaction</button>
+                <button
+                    className="SubmitButton SubmitTransaction"
+                    type="submit"
+                >
+                    Submit Transaction
+                </button>
                 {error && <Typography color="error">{error}</Typography>}
             </form>
-        </section >
+        </section>
     );
 };
 
