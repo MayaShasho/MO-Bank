@@ -43,7 +43,7 @@ const Login = () => {
             if (response.ok) {
                 localStorage.setItem('accessToken', result.accessToken);
                 localStorage.setItem('refreshToken', result.refreshToken);
-                navigate('/user');
+                navigate('/MO-Bank/user');
             } else {
                 setError(`Login failed: ${result.message}`);
             }

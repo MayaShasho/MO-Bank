@@ -10,19 +10,21 @@ import Confirmation from './components/confirmation/confirmation.js';
 import User from './components/dashboardPage/dashboard.js';
 
 function App() {
-  return (
-    <div className="App">
-      <Header />
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/confirmation" element={<Confirmation />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/user" element={<User />} />
-      </Routes>
-    </div>
-
-  );
+    return (
+        <div className="App">
+            <Header />
+            <Routes>
+                <Route path="/MO-Bank/" element={<LandingPage />} />
+                <Route path="/MO-Bank/signup" element={<Signup />} />
+                <Route
+                    path="/MO-Bank/confirmation"
+                    element={<Confirmation />}
+                />
+                <Route path="/MO-Bank/login" element={<Login />} />
+                <Route path="/MO-Bank/user" element={<User />} />
+            </Routes>
+        </div>
+    );
 }
 
 export default App;

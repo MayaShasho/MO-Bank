@@ -58,7 +58,7 @@ const Confirmation = () => {
             console.log(result);
             if (response.ok) {
                 localStorage.removeItem('email');
-                navigate('/login');
+                navigate('/MO-Bank/login');
             } else {
                 setError(`Confirmation failed: ${result.message}`);
             }

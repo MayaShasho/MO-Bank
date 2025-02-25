@@ -56,7 +56,7 @@ const Signup = () => {
 
             if (response.ok) {
                 localStorage.setItem('email', formData.email);
-                navigate('/confirmation');
+                navigate('/MO-Bank/confirmation');
             } else {
                 setError(`Signup failed: ${result.message}`);
             }
