@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/MO-Bank/static/css/main.60703ff6.css",
+    "main.css": "/MO-Bank/static/css/main.60ebe95d.css",
     "main.js": "/MO-Bank/static/js/main.f3d8e443.js",
     "static/js/453.80efc53e.chunk.js": "/MO-Bank/static/js/453.80efc53e.chunk.js",
     "static/media/dashboard.png": "/MO-Bank/static/media/dashboard.8caf8815dd5f127fec60.png",
@@ -22,12 +22,12 @@
     "static/media/inter-greek-ext-400-normal.woff2": "/MO-Bank/static/media/inter-greek-ext-400-normal.f2fa0d9ef98f59d4a75b.woff2",
     "static/media/inter-vietnamese-400-normal.woff2": "/MO-Bank/static/media/inter-vietnamese-400-normal.44c9df135eec470b0ab6.woff2",
     "index.html": "/MO-Bank/index.html",
-    "main.60703ff6.css.map": "/MO-Bank/static/css/main.60703ff6.css.map",
+    "main.60ebe95d.css.map": "/MO-Bank/static/css/main.60ebe95d.css.map",
     "main.f3d8e443.js.map": "/MO-Bank/static/js/main.f3d8e443.js.map",
     "453.80efc53e.chunk.js.map": "/MO-Bank/static/js/453.80efc53e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.60703ff6.css",
+    "static/css/main.60ebe95d.css",
     "static/js/main.f3d8e443.js"
   ]
 }
