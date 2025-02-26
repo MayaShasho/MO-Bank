@@ -5,44 +5,6 @@
     opacity: 1;
 }
 
-.AppHeader {
-    display: grid;
-    grid-template-columns: auto 1fr auto auto;
-    gap: 50px;
-    margin-bottom: 10px;
-}
-
-.AppLogo {
-    height: auto;
-    background: linear-gradient(190deg, #333, #757474);
-    border-radius: 10px;
-    color: white;
-    text-align: center;
-    align-content: center;
-    font-family: "Titan One", sans-serif;
-    font-size: 40px;
-    padding-inline: 15px;
-}
-
-.navButton {
-    background: none;
-    border: none;
-    font-size: 1rem;
-    cursor: pointer;
-    font-size: 25px;
-    display: flex;
-    gap: 10px;
-    align-items: center;
-}
-
-.ContactUsButton {
-    grid-column-start: 3;
-}
-
-.LoginButton {
-    grid-column-start: 4;
-}
-
 .MainContent {
     border-radius: 10px;
     color: white;
@@ -88,4 +50,11 @@
 
 .GetStartedButton:hover {
     box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+@media (max-width: 768px) {
+    .MainContent {
+        border-radius: 0;
+    }
+    
 }

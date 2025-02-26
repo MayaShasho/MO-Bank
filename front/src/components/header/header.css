@@ -1,0 +1,44 @@
+.AppHeader {
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    gap: 50px;
+    margin-bottom: 10px;
+}
+
+.AppLogo {
+    height: auto;
+    background: linear-gradient(190deg, #333, #757474);
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    align-content: center;
+    font-family: "Titan One", sans-serif;
+    font-size: 40px;
+    padding-inline: 15px;
+}
+
+.ContactUsButton {
+    grid-column-start: 3;
+}
+
+.LoginButton {
+    grid-column-start: 4;
+}
+
+.navButton {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    font-size: 25px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .AppHeader {
+        margin: 10px;
+    }
+    
+}

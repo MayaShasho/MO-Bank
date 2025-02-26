@@ -1,3 +1,4 @@
+import './header.css';
 import React from 'react';
 import { FaEnvelope, FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';

@@ -18,3 +18,12 @@
 .SubmitTransaction {
     width: 250px;
 }
+
+@media (max-width: 768px) {
+    .CreateTransactionForm {
+        flex-direction: column;
+        gap: 15px;
+        padding-top: 25px;
+
+    }
+}

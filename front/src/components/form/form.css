@@ -74,12 +74,13 @@
 .ShowPassword {
     position: absolute;
     top: 50%;
-    right: 5px;
+    right: 10px;
     transform: translateY(-50%);
     background: none;
     border: none;
     cursor: pointer;
     display: flex;
+
 }
 
 .SignupForm {
@@ -104,4 +105,10 @@
 
 .pincode-input-container {
     margin: auto;
+}
+
+@media (max-width: 768px) {
+    .FormContainer {
+        border-radius: 0px;
+    }
 }
