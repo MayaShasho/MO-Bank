@@ -1,11 +1,11 @@
-import nodemailer from 'nodemailer'
+import nodemailer from 'nodemailer';
 
 export const Transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
         user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASSWORD
-    }
+        pass: process.env.EMAIL_PASSWORD,
+    },
 });
 
 export const EmailForm = (email, emailCode) => {
@@ -13,7 +13,7 @@ export const EmailForm = (email, emailCode) => {
         from: process.env.EMAIL_USER,
         to: email,
         subject: process.env.EMAIL_SUBJECT,
-        text: process.env.EMAIL_TEXT + emailCode,
+        text: process.env.EMAIL_TEXT + ' ' + emailCode,
     };
 };
 
